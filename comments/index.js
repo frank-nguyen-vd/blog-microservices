@@ -2,9 +2,13 @@ const express = require("express");
 
 const { randomBytes } = require("crypto");
 
+const cors = require("cors");
+
 const app = express();
 
 app.use(express.json());
+
+app.use(cors());
 
 const commentsByPostId = {};
 
@@ -26,7 +30,7 @@ app.post("/posts/:id/comments", (req, res) => {
   res.status(201).send(comments);
 });
 
-const port = 4001;
+const port = 4000;
 app.listen(port, () => {
   console.log(`Listen on ${port}`);
 });
